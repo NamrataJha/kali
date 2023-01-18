@@ -1,11 +1,7 @@
-FROM finchsec/kali
-LABEL org.opencontainers.image.authors="thomas@finchsec.com"
-RUN apt update && \
-		apt install openssh-server --no-install-recommends -y && \
-		apt autoclean && \
-		rm -rf /var/lib/dpkg/status-old /var/lib/apt/lists/*
-RUN useradd -ms /bin/bash kali && usermod --password kali kali
-# SSH
-RUN mkdir /run/sshd
-EXPOSE 22
-CMD [ "/usr/sbin/sshd", "-4", "-D" ]
+#This is a sample Image 
+FROM ubuntu
+LABEL org.opencontainers.image.authors="namratajha@github.com"
+
+RUN apt-get update 
+RUN apt-get install –y nginx 
+CMD [“echo”,”Image created”] 
