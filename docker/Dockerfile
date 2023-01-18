@@ -1,5 +1,6 @@
-FROM ubuntu
-LABEL org.opencontainers.image.authors="namratajha@github.com"
+FROM kalilinux/kali-rolling
+LABEL org.opencontainers.image.authors="thomas@finchsec.com"
+ENV LANG en_US.UTF-8
 RUN apt-get update && \
 	echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/force-unsafe-io && \
 	apt-get dist-upgrade -y && \
@@ -26,3 +27,7 @@ RUN apt-get update && \
 			openssh-client kmod --no-install-recommends -y && \
 		apt-get autoclean && \
 		rm -rf /var/lib/dpkg/status-old /etc/dpkg/dpkg.cfg.d/force-unsafe-io /var/lib/apt/lists/*
+# Kismet
+EXPOSE 2501
+# Bettercap
+EXPOSE 80
